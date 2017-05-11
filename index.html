@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BitcointApi</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="app" ng-controller="ApiController as api">
+    <div class="container">
+        <h1>TradePay API</h1>
+        <hr>
+        <form name="frmApi">
+            <div class="form-group">
+                <label>AppKey</label>
+                <input type="text" class="form-control" name="api_key" ng-model="api.form.api_key">
+            </div>
+            <div class="form-group">
+                <label>Secret</label>
+                <input type="text" class="form-control" name="secret_key" ng-model="api.form.secret_key">
+            </div>
+            <div class="form-group">
+                <button ng-click="api.getApi()" class="btn btn-info">Get</button>
+            </div>
+        </form>
+        <pre>
+            {{api.response | json}}
+        </pre>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+
+
+    <script src="/bower_components/crypto-js/crypto-js.js"></script>
+    <script src="/bower_components/crypto-js/hmac-sha256.js"></script>
+    <script src="/bower_components/crypto-js/enc-base64.js"></script>
+
+    <script src="index.module.js"></script>
+
+    <!--<script>
+        var api_key = '044bd62b-97e7-4ebb-9caf-a3c25d362b83';
+        var secret_key = '32E92E73DBABABAEC55ECC13510DE52';
+
+        function generate(length) {
+            var text = "";
+            var possible = "0123456789";
+            for(var i = 0; i < length; i++) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return text;
+        }
+
+        var nonce = generate(10)
+
+        var message = nonce + api_key;
+        
+        
+        var hash = CryptoJS.HmacSHA256(message, secret_key);
+        var hashInBase64 = CryptoJS.enc.Base64.stringify(hash).toUpperCase();
+
+        console.log(nonce, hashInBase64);
+
+    </script>-->
+</body>
+
+</html>
